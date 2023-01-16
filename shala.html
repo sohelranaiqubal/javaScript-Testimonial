@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try again</title>
+    <script src="https://kit.fontawesome.com/0d1b4df2b4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="shala.css">
+
+    
+</head>
+<body>
+   <section id="bodysection"> 
+     <div class="container-fluid maincontainer"> 
+       <div class="overlay"></div>
+         <div class="test-title"><h1>I have no special talents, I am only passionately curious.<br> <span>Albert Einstein</span></h1></div>
+          <div class="testcontainer"> 
+            <div class="testRow">
+
+              <!--  -->
+              <div class="testIteam" id="lastimageDuplicate">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+                  <img src="testimonials-5.jpg" alt="">
+                   <h3>Mohammad</h3>
+                   <h4>Freelancer</h4>
+             </div>
+              <!--  -->
+
+               <div class="testIteam">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+                    <img src="testimonials-1.jpg" alt="">
+                     <h3>Mohammad</h3>
+                     <h4>Freelancer</h4>
+               </div>
+
+               <div class="testIteam">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+                  <img src="testimonials-2.jpg" alt="">
+                   <h3>Mohammad</h3>
+                   <h4>Freelancer</h4>
+             </div>
+
+             <div class="testIteam">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+                <img src="testimonials-3.jpg" alt="">
+                 <h3>Mohammad</h3>
+                 <h4>Freelancer</h4>
+           </div>
+
+           <div class="testIteam">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+              <img src="testimonials-4.jpg" alt="">
+               <h3>Mohammad</h3>
+               <h4>Freelancer</h4>
+         </div>
+
+         <div class="testIteam">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+            <img src="testimonials-5.jpg" alt="">
+             <h3>Mohammad</h3>
+             <h4>Freelancer</h4>
+       </div>
+
+       <!--  -->
+       <div class="testIteam" id="firstimageDuplicate">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quibusdam delectus, ad sequi commodi, debitis, officiis quo consequuntur atque at quam asperiores explicabo! Earum, fugiat incidunt similique id quo non.</p>
+          <img src="testimonials-1.jpg" alt="">
+           <h3>Mohammad</h3>
+           <h4>Freelancer</h4>
+     </div>
+       <!--  -->
+
+            </div>
+         </div>
+
+         <div class="buttons">
+          <span class="next"> &#10095</span>
+          <span class="prev">&#10094</span>
+         </div>
+
+         <div class="dots"> 
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+         </div>
+
+     </div>
+   </section>
+
+<script>
+  const slideElm = document.querySelector('.testcontainer');
+  const slideRow = document.querySelector('.testRow');
+  const slideItems = document.getElementsByClassName('testIteam');
+  const dots = document.getElementsByClassName('dot');
+  const nextBtn = document.querySelector('.next');
+  const prevBtn = document.querySelector('.prev')
+
+let index = 1;
+var width;
+
+function slideWidth() {
+   width = slideItems[0].clientWidth;
+}
+slideWidth();
+window.addEventListener('resize', slideWidth);
+slideRow.style.transform = 'translateX(' + (- width * index) + 'px)';
+
+// GO TO NEXT SLIDE
+nextBtn.addEventListener('click', slideNext);
+function slideNext() {
+     
+      if (index >= slideItems.length - 1) {
+        return;
+      }
+      slideRow.style.transition = 'transform 0.4s ease-out';
+      index++;
+      slideRow.style.transform = 'translateX(' + (- width * index) + 'px)';
+      indicators();
+}
+
+// GO TO PRIVIOUS SLIDE
+prevBtn.addEventListener('click', slidePrev);
+function slidePrev() {
+     
+      if (index <= 0) {
+        return;
+      }
+     
+      slideRow.style.transition = 'transform 0.4s ease-out';
+      index--;
+      slideRow.style.transform = 'translateX(' + (- width * index) + 'px)';
+      indicators();
+     
+}
+
+// RETURN TO THE FIRST SLIDE WHEN RECHES LASTSLIDE
+  slideRow.addEventListener('transitionend', returnFunction);
+  function returnFunction() {
+           if (slideItems[index].id === 'firstimageDuplicate') {
+            slideRow.style.transition = 'none';
+            index = slideItems.length - index;
+            slideRow.style.transform = 'translateX(' + (- width * index) + 'px)';
+            indicators();
+           }
+
+           if (slideItems[index].id === 'lastimageDuplicate') {
+            slideRow.style.transition = 'none';
+            index = slideItems.length - 2;
+            slideRow.style.transform = 'translateX(' + (- width * index) + 'px)';
+            indicators();
+           }
+  }
+
+  // code for the indecators
+     function indicators() {
+              for (i=0; i<dots.length; i++){
+                   dots[i].className = dots[i].className.replace (' active', '');
+              }
+              dots[index- 1].className += ' active'; 
+     }
+
+    //  AUTO SLIDER
+    function autoSlide() {
+       deleteInterval = setInterval (timer, 3000);
+       function timer() {
+        slideNext();
+        indicators();
+       }
+    }
+    autoSlide();
+
+    // STOP AUTO SLIDER WHEN MOUSE OVER THE BUTTON
+    const btns = document.querySelectorAll('.buttons span');
+    btns [0].addEventListener('mouseover', pause);
+    btns [1].addEventListener('mouseover', pause);
+    function pause() {
+             clearInterval( deleteInterval);
+    }
+
+    // START AUTO SLIDE WHEN MOUSE OUT OF THE BUTTONS
+    btns [0].addEventListener('mouseout', autoSlide);
+    btns [1].addEventListener('mouseout', autoSlide);
+</script>
+</body>
+</html>

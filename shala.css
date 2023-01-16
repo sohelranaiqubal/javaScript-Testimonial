@@ -1,0 +1,174 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#bodysection{ 
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+.maincontainer{
+   position: relative;
+   width: 100%;
+   min-height: 500px;
+   background-image: url('overlay-bg.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   color: #eee;
+   
+
+}
+.maincontainer *{z-index: 2;}
+.testItetam *{z-index: 2;}
+.maincontainer .overlay{ 
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   left: 0;
+   top: 0;
+   background-color: rgba(0, 0,0, 0.85);
+   z-index: 1;
+}
+.test-title h1{ 
+   text-align: center;
+   position: relative;
+   font-size: 40px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   margin-top: 20px;
+}
+.test-title h1::before{
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 2px;
+    background-color: yellow;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    bottom: -10px;
+}
+.test-title h1::after{
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    background-color: yellow;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    bottom: -18px;
+}
+.test-title span{color: green;}
+.testcontainer{
+    width: 70%;
+   overflow: hidden;
+}
+.testRow{
+    display: flex;
+}
+.testIteam{
+    min-width: 100%;
+    text-align: center;
+   
+}
+.testIteam p{
+    background-color: yellow;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    letter-spacing: 0.4px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+     
+
+    font-size: 20px;
+    margin-top: 40px;
+
+}
+.testIteam p::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    height: 20px;
+    width: 20px;
+    background-color: yellow;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    bottom: -10px;
+
+}
+.testIteam img{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    margin: 30px 0;
+    /* outline: 3px solid yellow;
+    outline-offset: none;
+    object-fit: cover; */
+    border: 3px solid yellow;
+}
+.testIteam h3{
+    font-size: 40px;
+    font-style: italic;
+    padding: 5px;
+}
+.testIteam h4{
+    font-style: italic;
+    font-size: 18px;
+}
+.maincontainer span.next, .maincontainer span.prev{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 12px 17px;
+    user-select: none;
+    cursor: pointer;
+    z-index: 3;
+    transition: 0.5s;
+}
+.maincontainer span.next:hover, .maincontainer span.prev:hover{
+    background-color: #555;
+    opacity: 0.5;
+    color: #eee;
+}
+span.next{
+    right: 30px;
+}
+span.prev{
+    left: 30px;
+}
+.maincontainer .dots{
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 20px;
+    /* margin: 30px 0; */
+    
+}
+.maincontainer .dots .dot{
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 2px solid yellow;
+    margin: 0 3px;
+    transition: background-color 0.4s ease-in;
+
+}
+.maincontainer .dots .active{
+    background-color: yellow;
+}
